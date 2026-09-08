@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.example.niceapi.dto.request.AssetRequestDTO;
 import com.example.niceapi.dto.response.AssetResponseDTO;
 import com.example.niceapi.model.Asset;
+import com.example.niceapi.model.AssetType;
 import com.example.niceapi.repository.AssetRepository;
 
 @Service
@@ -57,7 +58,7 @@ public class AssetService {
         asset.setCurrentValueNGN(requestDTO.getCurrentValueNGN());
         asset.setCurrentValueUSD(requestDTO.getCurrentValueUSD());
         asset.setUnit(requestDTO.getUnit());
-        asset.setStatus(requestDTO.getAssetStatus());
+        asset.setStatus(requestDTO.getStatus());
         assetRepository.save(asset);
         return new AssetResponseDTO(
                 asset.getId(),
@@ -79,7 +80,7 @@ public class AssetService {
         asset.setCurrentValueNGN(requestDTO.getCurrentValueNGN());
         asset.setCurrentValueUSD(requestDTO.getCurrentValueUSD());
         asset.setUnit(requestDTO.getUnit());
-        asset.setStatus(requestDTO.getAssetStatus());
+        asset.setStatus(requestDTO.getStatus());
         assetRepository.save(asset);
         return new AssetResponseDTO(
                 asset.getId(),
@@ -92,28 +93,28 @@ public class AssetService {
                 asset.getStatus());
     }
 
-    public void deleteAsset(Long id){
-        if(!assetRepository.existsById(id)){
+    public void deleteAsset(Long id) {
+        if (!assetRepository.existsById(id)) {
             throw new RuntimeException("Asset not found with id: " + id);
         }
         assetRepository.deleteById(id);
     }
 
-    public List<AssetResponseDTO> filterByType(String query){
-        List<Asset> assets = assetRepository.findByAssetType(query);
-        if(assets.isEmpty()){
-            throw new RuntimeException("No assets found for type: " + query);
+    public List<AssetResponseDTO> filterByType(AssetType assetType) {
+        List<Asset> assets = assetRepository.findByAssetType(assetType);
+        if (assets.isEmpty()) {
+            throw new RuntimeException("No assets found for type: " + assetType);
         }
         return assets.stream()
-            .map(m -> new AssetResponseDTO(
-                m.getId(),
-                m.getAssetName(),
-                m.getAssetType(),
-                m.getQuantity(),
-                m.getCurrentValueNGN(),
-                m.getCurrentValueUSD(),
-                m.getUnit(),
-                m.getStatus()))
-            .collect(Collectors.toList());
+                .map(m -> new AssetResponseDTO(
+                        m.getId(),
+                        m.getAssetName(),
+                        m.getAssetType(),
+                        m.getQuantity(),
+                        m.getCurrentValueNGN(),
+                        m.getCurrentValueUSD(),
+                        m.getUnit(),
+                        m.getStatus()))
+                .collect(Collectors.toList());
     }
 }

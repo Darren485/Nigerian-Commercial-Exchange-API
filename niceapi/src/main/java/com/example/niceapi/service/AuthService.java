@@ -36,6 +36,7 @@ public class AuthService {
 
     public String register(LoginRequestDTO request, String role) {
         User user = new User();
+        user.setUsername(request.getEmail());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(Role.valueOf(role.toUpperCase()));

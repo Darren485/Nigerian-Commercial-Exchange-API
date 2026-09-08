@@ -13,12 +13,12 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.Data;
 
-@Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "transactions")
 public class Transaction extends Auditable {
@@ -68,4 +68,110 @@ public class Transaction extends Auditable {
     @ManyToOne
     @JoinColumn(name = "asset_id")
     private Asset asset;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTransactionCode() {
+        return transactionCode;
+    }
+
+    public void setTransactionCode(String transactionCode) {
+        this.transactionCode = transactionCode;
+    }
+
+    public TransactionType getTransactionType() {
+        return transactionType;
+    }
+
+    public void setTransactionType(TransactionType transactionType) {
+        this.transactionType = transactionType;
+    }
+
+    public Sector getSector() {
+        return sector;
+    }
+
+    public void setSector(Sector sector) {
+        this.sector = sector;
+    }
+
+    public Double getAmountNGN() {
+        return amountNGN;
+    }
+
+    public void setAmountNGN(Double amountNGN) {
+        this.amountNGN = amountNGN;
+    }
+
+    public Double getAmountUSD() {
+        return amountUSD;
+    }
+
+    public void setAmountUSD(Double amountUSD) {
+        this.amountUSD = amountUSD;
+    }
+
+    public Currency getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
+    }
+
+    public TransactionStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(TransactionStatus status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getTradeDate() {
+        return tradeDate;
+    }
+
+    public void setTradeDate(LocalDateTime tradeDate) {
+        this.tradeDate = tradeDate;
+    }
+
+    public LocalDateTime getSettlementDate() {
+        return settlementDate;
+    }
+
+    public void setSettlementDate(LocalDateTime settlementDate) {
+        this.settlementDate = settlementDate;
+    }
+
+    public Company getBuyerCompany() {
+        return buyerCompany;
+    }
+
+    public void setBuyerCompany(Company buyerCompany) {
+        this.buyerCompany = buyerCompany;
+    }
+
+    public Company getSellerCompany() {
+        return sellerCompany;
+    }
+
+    public void setSellerCompany(Company sellerCompany) {
+        this.sellerCompany = sellerCompany;
+    }
+
+    public Asset getAsset() {
+        return asset;
+    }
+
+    public void setAsset(Asset asset) {
+        this.asset = asset;
+    }
+
+    
 }

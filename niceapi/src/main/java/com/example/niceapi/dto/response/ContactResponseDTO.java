@@ -3,7 +3,6 @@ package com.example.niceapi.dto.response;
 import com.example.niceapi.model.Category;
 import com.example.niceapi.model.ContactStatus;
 import com.example.niceapi.model.Sector;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +12,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ContactResponseDTO {
     private Long id;
-    private String fullName;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String phoneNumber;
-    private String subject;
-    private String message;
+    private String phone;
+    private String company;
     private ContactStatus status;
     private Category category;
     private Sector sector;

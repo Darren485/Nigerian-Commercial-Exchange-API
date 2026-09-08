@@ -6,11 +6,13 @@ import com.example.niceapi.model.Sector;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 public class ContactRequestDTO {
-    @NotNull(message = " Contact ID is required")
-    private Long id;
-
     @NotBlank(message = " Full name is required")
     private String fullName;
 
@@ -34,14 +36,6 @@ public class ContactRequestDTO {
 
     @NotNull(message = " Status is required")
     private ContactStatus status;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFullName() {
         return fullName;
@@ -106,4 +100,5 @@ public class ContactRequestDTO {
     public void setStatus(ContactStatus status) {
         this.status = status;
     }
+
 }

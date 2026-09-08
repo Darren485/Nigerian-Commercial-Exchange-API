@@ -1,4 +1,4 @@
-package com.example.healthcareapi.exception;
+package com.example.niceapi.exception;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -30,7 +30,7 @@ public class GlobalExceptionHandler {
                         LocalDateTime.now()));
     }
 
-    @ExceptionHandler(AppointmentNotFoundException.class)
+    @ExceptionHandler(CompanyNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleCompanyNotFoundException(CompanyNotFoundException e) {
 
         return ResponseEntity

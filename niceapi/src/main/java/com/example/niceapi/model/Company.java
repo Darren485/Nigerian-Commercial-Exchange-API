@@ -14,7 +14,6 @@ import jakarta.persistence.OneToMany;
 import java.util.List;
 import lombok.AllArgsConstructor;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -61,4 +60,109 @@ public class Company extends Auditable {
 
     @OneToMany(mappedBy = "sellerCompany")
     private List<Transaction> transactions2;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getRcNumber() {
+        return rcNumber;
+    }
+
+    public void setRcNumber(String rcNumber) {
+        this.rcNumber = rcNumber;
+    }
+
+    public Sector getSector() {
+        return sector;
+    }
+
+    public void setSector(Sector sector) {
+        this.sector = sector;
+    }
+
+    public String getSubSector() {
+        return subSector;
+    }
+
+    public void setSubSector(String subSector) {
+        this.subSector = subSector;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getStockTicker() {
+        return stockTicker;
+    }
+
+    public void setStockTicker(String stockTicker) {
+        this.stockTicker = stockTicker;
+    }
+
+    public Double getMarketCapNGN() {
+        return marketCapNGN;
+    }
+
+    public void setMarketCapNGN(Double marketCapNGN) {
+        this.marketCapNGN = marketCapNGN;
+    }
+
+    public CompanyStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(CompanyStatus status) {
+        this.status = status;
+    }
+
+    public List<Asset> getAssets() {
+        return assets;
+    }
+
+    public void setAssets(List<Asset> assets) {
+        this.assets = assets;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public List<Transaction> getTransactions2() {
+        return transactions2;
+    }
+
+    public void setTransactions2(List<Transaction> transactions2) {
+        this.transactions2 = transactions2;
+    }
+
 }

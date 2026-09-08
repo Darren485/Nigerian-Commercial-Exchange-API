@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.example.niceapi.dto.request.CompanyRequestDTO;
 import com.example.niceapi.dto.response.CompanyResponseDTO;
 import com.example.niceapi.model.Company;
+import com.example.niceapi.model.Sector;
 import com.example.niceapi.repository.CompanyRepository;
 
 import java.util.List;
@@ -57,11 +58,12 @@ public class CompanyService {
     public CompanyResponseDTO createCompany(CompanyRequestDTO request) {
         Company company = new Company();
         company.setCompanyName(request.getCompanyName());
-        company.setRcNumber(request.getRcName());
+        company.setRcNumber(request.getRcNumber());
         company.setSector(request.getSector());
         company.setSubSector(request.getSubSector());
-        company.setState(request.getDate());
         company.setCountry(request.getCountry());
+        company.setState(request.getState());
+        company.setState(request.getState());
         company.setStockTicker(request.getStockTicker());
         company.setMarketCapNGN(request.getMarketCapNGN());
         company.setStatus(request.getStatus());
@@ -85,14 +87,16 @@ public class CompanyService {
                 .orElseThrow(() -> new RuntimeException("Company not found with id: " + id));
 
         company.setCompanyName(request.getCompanyName());
-        company.setRcNumber(request.getRcName());
+        company.setRcNumber(request.getRcNumber());
         company.setSector(request.getSector());
         company.setSubSector(request.getSubSector());
-        company.setState(request.getDate());
         company.setCountry(request.getCountry());
+        company.setState(request.getState());
+        company.setState(request.getState());
         company.setStockTicker(request.getStockTicker());
         company.setMarketCapNGN(request.getMarketCapNGN());
         company.setStatus(request.getStatus());
+        company.setState(request.getState());
 
         Company savedCompany = companyRepository.save(company);
         return new CompanyResponseDTO(
@@ -115,23 +119,23 @@ public class CompanyService {
         companyRepository.deleteById(id);
     }
 
-    public List<CompanyResponseDTO> findBySector(String query){
-        List<Company> companies = companyRepository.findBySector(query);
-        if(companies.isEmpty()){
-            throw new RuntimeException("No companies found for sector: " + query);
+    public List<CompanyResponseDTO> findBySector(Sector sector) {
+        List<Company> companies = companyRepository.findBySector(sector);
+        if (companies.isEmpty()) {
+            throw new RuntimeException("No companies found for sector: " + sector);
         }
         return companies.stream()
-            .map(m -> new CompanyResponseDTO(
-                m.getId(),
-                m.getCompanyName(),
-                m.getRcNumber(),
-                m.getSector(),
-                m.getSubSector(),
-                m.getState(),
-                m.getCountry(),
-                m.getStockTicker(),
-                m.getMarketCapNGN(),
-                m.getStatus()))
-            .collect(Collectors.toList());
+                .map(m -> new CompanyResponseDTO(
+                        m.getId(),
+                        m.getCompanyName(),
+                        m.getRcNumber(),
+                        m.getSector(),
+                        m.getSubSector(),
+                        m.getState(),
+                        m.getCountry(),
+                        m.getStockTicker(),
+                        m.getMarketCapNGN(),
+                        m.getStatus()))
+                .collect(Collectors.toList());
     }
 }

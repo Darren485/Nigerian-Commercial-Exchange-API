@@ -2,7 +2,6 @@ package com.example.niceapi.dto.response;
 
 import com.example.niceapi.model.CompanyStatus;
 import com.example.niceapi.model.Sector;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,15 +10,14 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CompanyResponseDTO {
-
     private Long id;
-    private String companyName;
-    private String rcNumeber;
+    private String name;
+    private String registrationNumber;
     private Sector sector;
-    private String subSector;
+    private String address;
+    private String city;
     private String state;
     private String country;
-    private String stockTicker;
-    private Double marketCapNGN;
+    private Double marketCap;
     private CompanyStatus status;
 }

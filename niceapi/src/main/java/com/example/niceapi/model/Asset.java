@@ -16,7 +16,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -29,6 +28,7 @@ public class Asset extends Auditable {
     @Column(name = "asset_name")
     private String assetName;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "asset_type")
     private AssetType assetType;// (STOCK/BOND/VESSEL/MINE/OIL_WELL/PROPERTY/COMMODITY/WAREHOUSE)
 
@@ -42,7 +42,7 @@ public class Asset extends Auditable {
     private Double currentValueUSD;
 
     @Column(name = "unit")
-    private Double unit;
+    private String unit;
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name = "status")
@@ -54,4 +54,87 @@ public class Asset extends Auditable {
 
     @OneToMany(mappedBy = "asset")
     private List<Transaction> transactions;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAssetName() {
+        return assetName;
+    }
+
+    public void setAssetName(String assetName) {
+        this.assetName = assetName;
+    }
+
+    public AssetType getAssetType() {
+        return assetType;
+    }
+
+    public void setAssetType(AssetType assetType) {
+        this.assetType = assetType;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getCurrentValueNGN() {
+        return currentValueNGN;
+    }
+
+    public void setCurrentValueNGN(Double currentValueNGN) {
+        this.currentValueNGN = currentValueNGN;
+    }
+
+    public Double getCurrentValueUSD() {
+        return currentValueUSD;
+    }
+
+    public void setCurrentValueUSD(Double currentValueUSD) {
+        this.currentValueUSD = currentValueUSD;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public AssetStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(AssetStatus status) {
+        this.status = status;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+
+    
 }
